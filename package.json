@@ -2,9 +2,10 @@
   "name": "food-mansion",
   "version": "1.0.0",
   "description": "My first React App",
-  "main": "app.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "npx parcel index.html",
+    "build": "npx parcel build index.html"
   },
   "author": "Vyom Rastogi",
   "license": "ISC",
