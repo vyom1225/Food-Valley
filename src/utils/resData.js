@@ -1,4 +1,4 @@
-export const resData = [
+ const resData = [
     {
         "info": {
             "id": "657712",
@@ -793,3 +793,4 @@ export const resData = [
         }
     },
 ]
+export default resData;
