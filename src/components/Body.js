@@ -1,16 +1,31 @@
 import RestaurantCard from "./RestaurantCard.js"
 import resData from "../utils/resData.js"
-const Body = ()=>(
-    <div className = "body">
-    <div className = "search-bar">
-        <button>Search</button>
+import {useState} from "react";
+const Body = ()=>{
+    const [filterBtnName,setfilterBtnName] = useState("Top Rated Restaurants");
+    const [listOfRestaurants,setlistOfRestaurants] = useState(resData);
+    return (<div className = "body">
+    <div className = "filter-btn">
+        <button onClick={()=>{
+            if(listOfRestaurants===resData){
+                setfilterBtnName("All Restaurants");
+                setlistOfRestaurants(listOfRestaurants.filter((res)=>{
+                    return res.info.avgRating >=4.5;
+                }));
+            }else{
+                setfilterBtnName("Top Rated Restaurants");
+                setlistOfRestaurants(resData);
+            }
+        }    
+        }>{filterBtnName}</button>
     </div>
     <div className = "res-container">
-        {resData.map((res) =>(
+        {listOfRestaurants.map((res) =>(
             <RestaurantCard key={res.info.id} props={res.info} />
         ))}
     </div>
     </div>
-)
+    )
+}
 
 export default Body;
